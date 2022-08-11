@@ -21,7 +21,7 @@ class _CreditCardsState extends State<CreditCards> {
           backgroundColor: background,
           appBar: AppBar(
             leading: const BackButton(color: Colors.white),
-            title: const Text('Wallet'),
+            title: const Text('Wallet x'),
             centerTitle: true,
             backgroundColor: background,
             toolbarHeight: 65,
