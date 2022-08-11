@@ -21,7 +21,7 @@ class _CreditCardsState extends State<CreditCards> {
           backgroundColor: background,
           appBar: AppBar(
             leading: const BackButton(color: Colors.white),
-            title: const Text('Wallet x'),
+            title: const Text('Wallet'),
             centerTitle: true,
             backgroundColor: background,
             toolbarHeight: 65,
@@ -59,7 +59,8 @@ class _CreditCardsState extends State<CreditCards> {
             ),
           ),
           body: const TabBarView(
-            children: [FirstTab(), Text('fd')],
+            physics: NeverScrollableScrollPhysics(),
+            children: [FirstTab(), Text('Services')],
           )),
     );
   }

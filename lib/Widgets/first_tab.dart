@@ -40,7 +40,7 @@ class _FirstTabState extends State<FirstTab> {
           itemBuilder: (BuildContext context, int index) {
             return flipMeNow(myCards[index], index);
           },
-          curve: Curves.bounceInOut,
+          curve: Curves.easeInOut,
           itemCount: myCards.length,
           itemWidth: 350.0,
           itemHeight: 250,
