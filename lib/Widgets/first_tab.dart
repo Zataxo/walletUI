@@ -15,6 +15,7 @@ class FirstTab extends StatefulWidget {
 
 class _FirstTabState extends State<FirstTab> {
   @override
+  @override
   Widget build(BuildContext context) {
     List<CardModel> myCards = [
       CardModel(
@@ -34,183 +35,221 @@ class _FirstTabState extends State<FirstTab> {
     DateTime date = DateTime(2022, 08, 07);
     final dateText = TextEditingController();
 
-    return Column(
-      children: [
-        Swiper(
-          itemBuilder: (BuildContext context, int index) {
-            return flipMeNow(myCards[index], index);
-          },
-          curve: Curves.easeInOut,
-          itemCount: myCards.length,
-          itemWidth: 350.0,
-          itemHeight: 250,
-          layout: SwiperLayout.STACK,
-          // scrollDirection: Axis.vertical,
-          // axisDirection: AxisDirection.up,
-        ),
-        Container(
-          margin: const EdgeInsets.all(8),
-          width: 400,
-          height: 400,
-          decoration: BoxDecoration(
-            color: Colors.white10,
-            borderRadius: BorderRadius.circular(15),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          Swiper(
+            itemBuilder: (BuildContext context, int index) {
+              return flipMeNow(myCards[index], index);
+            },
+            curve: Curves.easeInOutSine,
+
+            itemCount: myCards.length,
+            itemWidth: 350.0,
+            itemHeight: 250,
+            layout: SwiperLayout.TINDER,
+            scrollDirection: Axis.horizontal,
+            // axisDirection: AxisDirection.up,
           ),
-          child: Column(
+          const SizedBox(
+            height: 10,
+          ),
+          Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                    ),
-                    const Text(
-                      '   Add Card',
-                      style: TextStyle(color: Colors.white, fontSize: 18),
-                    ),
-                    const SizedBox(
-                      width: 90,
-                    ),
-                    Text(
-                      'Add your debit/credit',
-                      style: TextStyle(color: headlines, fontSize: 16),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: 370,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20), color: background),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.card_giftcard_outlined),
-                        hintText: 'Card number',
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(color: headlines)),
-                  ),
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: 370,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20), color: background),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    style: const TextStyle(color: Colors.white),
-                    decoration: InputDecoration(
-                        prefixIcon: const Icon(Icons.person),
-                        hintText: 'Card holder name',
-                        border: InputBorder.none,
-                        hintStyle: TextStyle(color: headlines)),
-                  ),
-                ),
-              ),
+              generateDots(),
               const SizedBox(
                 width: 5,
               ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 160,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: background),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          controller: dateText,
-                          style: const TextStyle(color: Colors.white),
-                          decoration: InputDecoration(
-                              hintText: 'Exp Date :'
-                                  '${date.year}/${date.month}/${date.day}',
-                              prefixIcon: const Icon(Icons.date_range_rounded),
-                              border: InputBorder.none,
-                              hintStyle:
-                                  TextStyle(color: headlines, fontSize: 12)),
-                        ),
+              generateDots(),
+              const SizedBox(
+                width: 5,
+              ),
+              generateDots()
+            ],
+          ),
+          Container(
+            margin: const EdgeInsets.all(8),
+            width: 400,
+            height: 400,
+            decoration: BoxDecoration(
+              color: Colors.white10,
+              borderRadius: BorderRadius.circular(15),
+            ),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      const Icon(
+                        Icons.add,
+                        color: Colors.white,
                       ),
+                      const Text(
+                        '   Add Card',
+                        style: TextStyle(color: Colors.white, fontSize: 18),
+                      ),
+                      const SizedBox(
+                        width: 90,
+                      ),
+                      Text(
+                        'Add your debit/credit',
+                        style: TextStyle(color: headlines, fontSize: 16),
+                      ),
+                    ],
+                  ),
+                ),
+                const SizedBox(
+                  width: 50,
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: 370,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: background),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.card_giftcard_outlined),
+                          hintText: 'Card number',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(color: headlines)),
                     ),
-                    IconButton(
-                        onPressed: () async {
-                          DateTime? newDate = await showDatePicker(
-                              context: context,
-                              initialDate: date,
-                              firstDate: DateTime(1900),
-                              lastDate: DateTime(2100));
-
-                          if (newDate == null) return;
-                          setState(() {
-                            date = newDate;
-                            dateText.text = newDate.toString().split(' ')[0];
-                            //print(date);
-                          });
-                        },
-                        icon: const Icon(Icons.date_range)),
-                    Container(
-                      width: 160,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: background),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TextField(
-                          style: const TextStyle(color: Colors.white),
-                          decoration: InputDecoration(
-                            prefixIcon: const Icon(
-                              Icons.security_rounded,
-                            ),
-                            hintText: 'Security code',
-                            border: InputBorder.none,
-                            hintStyle:
-                                TextStyle(color: headlines, fontSize: 12),
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Container(
+                  width: 370,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: background),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TextField(
+                      style: const TextStyle(color: Colors.white),
+                      decoration: InputDecoration(
+                          prefixIcon: const Icon(Icons.person),
+                          hintText: 'Card holder name',
+                          border: InputBorder.none,
+                          hintStyle: TextStyle(color: headlines)),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 160,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: background),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            controller: dateText,
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                                hintText: 'Exp Date :'
+                                    '${date.year}/${date.month}/${date.day}',
+                                prefixIcon:
+                                    const Icon(Icons.date_range_rounded),
+                                border: InputBorder.none,
+                                hintStyle:
+                                    TextStyle(color: headlines, fontSize: 12)),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                width: 200,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: const Color(0xff0DA6C2),
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Next',
-                    style: TextStyle(color: Colors.white, fontSize: 16),
+                      IconButton(
+                          onPressed: () async {
+                            DateTime? newDate = await showDatePicker(
+                                context: context,
+                                initialDate: date,
+                                firstDate: DateTime(1900),
+                                lastDate: DateTime(2100));
+
+                            if (newDate == null) return;
+                            setState(() {
+                              date = newDate;
+                              dateText.text = newDate.toString().split(' ')[0];
+                              //print(date);
+                            });
+                          },
+                          icon: const Icon(Icons.date_range)),
+                      Container(
+                        width: 160,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: background),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: TextField(
+                            style: const TextStyle(color: Colors.white),
+                            decoration: InputDecoration(
+                              prefixIcon: const Icon(
+                                Icons.security_rounded,
+                              ),
+                              hintText: 'Security code',
+                              border: InputBorder.none,
+                              hintStyle:
+                                  TextStyle(color: headlines, fontSize: 12),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              )
-            ],
+                Container(
+                  width: 200,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color(0xff0DA6C2),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: TextButton(
+                    onPressed: () {},
+                    child: const Text(
+                      'Next',
+                      style: TextStyle(color: Colors.white, fontSize: 16),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
+  }
+
+  Builder generateDots() {
+    return Builder(builder: (context) {
+      return Container(
+        width: 5,
+        height: 5,
+        decoration: BoxDecoration(
+          color: Colors.grey,
+          borderRadius: BorderRadius.circular(25),
+        ),
+      );
+    });
   }
 
   BlurryContainer mainActivites(String img) {
