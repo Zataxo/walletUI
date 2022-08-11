@@ -14,7 +14,8 @@ class FirstTab extends StatefulWidget {
 }
 
 class _FirstTabState extends State<FirstTab> {
-  @override
+  final dateText = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     List<CardModel> myCards = [
@@ -33,7 +34,6 @@ class _FirstTabState extends State<FirstTab> {
     ];
 
     DateTime date = DateTime(2022, 08, 07);
-    final dateText = TextEditingController();
 
     return SingleChildScrollView(
       child: Column(
@@ -190,6 +190,7 @@ class _FirstTabState extends State<FirstTab> {
                               dateText.text = newDate.toString().split(' ')[0];
                               //print(date);
                             });
+                            print(dateText.text);
                           },
                           icon: const Icon(Icons.date_range)),
                       Container(
