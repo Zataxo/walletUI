@@ -49,7 +49,7 @@ class _FirstTabState extends State<FirstTab> {
             itemHeight: 250,
             layout: SwiperLayout.TINDER,
             scrollDirection: Axis.horizontal,
-            // axisDirection: AxisDirection.up,
+            scale: 0.5, // axisDirection: AxisDirection.up,
           ),
           const SizedBox(
             height: 10,
