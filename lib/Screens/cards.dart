@@ -52,7 +52,7 @@ class _CreditCardsState extends State<CreditCards> {
                         color: Colors.white,
                       ),
                     ),
-                    Text('Account')
+                    Text('Accounts')
                   ],
                 ),
               ],
