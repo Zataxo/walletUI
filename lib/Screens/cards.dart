@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:wallet/Constants/colors.dart';
 import 'package:wallet/Widgets/first_tab.dart';
+import 'package:wallet/Widgets/second_tab.dart';
 
 class CreditCards extends StatefulWidget {
   const CreditCards({Key? key}) : super(key: key);
@@ -48,11 +49,11 @@ class _CreditCardsState extends State<CreditCards> {
                   children: const [
                     Tab(
                       icon: Icon(
-                        Icons.account_balance_outlined,
+                        Icons.miscellaneous_services,
                         color: Colors.white,
                       ),
                     ),
-                    Text('Accounts')
+                    Text('Services')
                   ],
                 ),
               ],
@@ -60,7 +61,7 @@ class _CreditCardsState extends State<CreditCards> {
           ),
           body: const TabBarView(
             physics: NeverScrollableScrollPhysics(),
-            children: [FirstTab(), Text('Services')],
+            children: [FirstTab(), SecondTab()],
           )),
     );
   }
