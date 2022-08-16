@@ -119,7 +119,10 @@ class _FirstTabState extends State<FirstTab> {
                     child: TextField(
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.card_giftcard_outlined),
+                          prefixIcon: const Icon(
+                            Icons.card_giftcard_outlined,
+                            color: Colors.white,
+                          ),
                           hintText: 'Card number',
                           border: InputBorder.none,
                           hintStyle: TextStyle(color: headlines)),
@@ -139,7 +142,10 @@ class _FirstTabState extends State<FirstTab> {
                     child: TextField(
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
-                          prefixIcon: const Icon(Icons.person),
+                          prefixIcon: const Icon(
+                            Icons.person,
+                            color: Colors.white,
+                          ),
                           hintText: 'Card holder name',
                           border: InputBorder.none,
                           hintStyle: TextStyle(color: headlines)),
@@ -168,8 +174,10 @@ class _FirstTabState extends State<FirstTab> {
                             decoration: InputDecoration(
                                 hintText: 'Exp Date :'
                                     '${date.year}/${date.month}/${date.day}',
-                                prefixIcon:
-                                    const Icon(Icons.date_range_rounded),
+                                prefixIcon: const Icon(
+                                  Icons.date_range_rounded,
+                                  color: Colors.white,
+                                ),
                                 border: InputBorder.none,
                                 hintStyle:
                                     TextStyle(color: headlines, fontSize: 12)),
@@ -192,7 +200,10 @@ class _FirstTabState extends State<FirstTab> {
                             });
                             print(dateText.text);
                           },
-                          icon: const Icon(Icons.date_range)),
+                          icon: const Icon(
+                            Icons.date_range,
+                            color: Colors.white,
+                          )),
                       Container(
                         width: 160,
                         decoration: BoxDecoration(
@@ -205,6 +216,7 @@ class _FirstTabState extends State<FirstTab> {
                             decoration: InputDecoration(
                               prefixIcon: const Icon(
                                 Icons.security_rounded,
+                                color: Colors.white,
                               ),
                               hintText: 'Security code',
                               border: InputBorder.none,
