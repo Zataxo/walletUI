@@ -43,6 +43,7 @@ dependencies:
   fl_chart: ^0.55.1
   slide_switcher: ^1.1.1
   card_swiper: ^2.0.4
+  flutter_svg: ^1.0.3
  
 
 dev_dependencies:
