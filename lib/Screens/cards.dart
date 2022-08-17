@@ -47,12 +47,7 @@ class _CreditCardsState extends State<CreditCards> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: const [
-                    Tab(
-                      icon: Icon(
-                        Icons.featured_play_list,
-                        color: Colors.white,
-                      ),
-                    ),
+                    Tab(icon: Icon(Icons.featured_play_list)),
                     Text('Services')
                   ],
                 ),

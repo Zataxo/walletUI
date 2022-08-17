@@ -44,6 +44,9 @@ dependencies:
   slide_switcher: ^1.1.1
   card_swiper: ^2.0.4
   flutter_svg: ^1.0.3
+  font_awesome_flutter: ^10.1.0
+  stories_for_flutter: ^1.2.0
+
  
 
 dev_dependencies:

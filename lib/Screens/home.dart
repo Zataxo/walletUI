@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
+import 'package:stories_for_flutter/stories_for_flutter.dart';
 
 import '../Constants/colors.dart';
 
@@ -66,6 +67,69 @@ class _HomeScreenState extends State<HomeScreen> {
                   onPressed: () {},
                   icon: const Icon(Icons.more_vert),
                   color: Colors.white,
+                ),
+              ],
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Stories(
+              displayProgress: true,
+              fullPagetitleStyle: const TextStyle(color: Colors.white),
+              showStoryName: false,
+              storyItemList: [
+                // First group of stories
+                StoryItem(
+                    name: "First Story",
+                    thumbnail: const NetworkImage(
+                      "https://assets.materialup.com/uploads/82eae29e-33b7-4ff7-be10-df432402b2b6/preview",
+                    ),
+                    stories: [
+                      // First story
+                      Scaffold(
+                        body: Container(
+                          decoration: const BoxDecoration(
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: NetworkImage(
+                                "https://wallpaperaccess.com/full/16568.png",
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Second story in first group
+                      const Scaffold(
+                        body: Center(
+                          child: Text(
+                            "Second story in first group !",
+                            style: TextStyle(
+                              color: Color(0xff777777),
+                              fontSize: 25,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ]),
+                // Second story group
+                StoryItem(
+                  name: "2nd",
+                  thumbnail: const NetworkImage(
+                    "https://www.shareicon.net/data/512x512/2017/03/29/881758_cup_512x512.png",
+                  ),
+                  stories: [
+                    const Scaffold(
+                      body: Center(
+                        child: Text(
+                          "That's it, Folks !",
+                          style: TextStyle(
+                            color: Color(0xff777777),
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

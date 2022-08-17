@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:wallet/Constants/colors.dart';
 import 'package:wallet/model/services_model.dart';
 
@@ -9,6 +10,7 @@ class SecondTab extends StatefulWidget {
   State<SecondTab> createState() => _SecondTabState();
 }
 
+// generating Examples Using Constructors
 class _SecondTabState extends State<SecondTab> {
   Services accDetails = Services(
       name: 'Account Details',
@@ -18,6 +20,13 @@ class _SecondTabState extends State<SecondTab> {
       name: 'Pay Bills',
       myColor: accountPayBills,
       img: Icons.account_balance_wallet);
+  Services accTransferAmount = Services(
+      name: 'Money Transfer',
+      myColor: transferMoney,
+      img: FontAwesomeIcons.moneyBillTransfer);
+
+  // generating Examples Using Constructors//
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -32,7 +41,49 @@ class _SecondTabState extends State<SecondTab> {
               children: [
                 myServices(accDetails),
                 myServices(accPayBills),
+                myServices(accTransferAmount),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
                 myServices(accDetails),
+                myServices(accPayBills),
+                myServices(accTransferAmount),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                myServices(accDetails),
+                myServices(accPayBills),
+                myServices(accTransferAmount),
+              ],
+            ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                myServices(accDetails),
+                myServices(accPayBills),
+                myServices(accTransferAmount),
               ],
             ),
           ),
@@ -46,20 +97,35 @@ class _SecondTabState extends State<SecondTab> {
       width: 110,
       height: 110,
       decoration: BoxDecoration(
-        color: Colors.white12,
+        color: Colors.white10,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
+        // crossAxisAlignment: CrossAxisAlignment.center,
+        // mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              accServices.img,
-              size: 52,
-              color: accServices.myColor,
-            ),
+          Row(
+            children: [
+              const SizedBox(
+                width: 20,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: accServices.img is String
+                    ? SizedBox(
+                        height: 50,
+                        width: 50,
+                        child: Image.asset(
+                          accServices.img,
+                        ),
+                      )
+                    : Icon(
+                        accServices.img as IconData,
+                        size: 52,
+                        color: accServices.myColor,
+                      ),
+              ),
+            ],
           ),
           const SizedBox(
             height: 40,
