@@ -38,6 +38,20 @@ class _HomeScreenState extends State<HomeScreen> {
             'https://mangoo.tech/wp-content/uploads/2021/05/money-transfer.gif',
         storyItemsScreen: [
           'https://mangoo.tech/wp-content/uploads/2021/05/money-transfer.gif'
+        ]),
+    StoryItemsManual(
+        storyName: 'Zain',
+        storyThumbnail:
+            'https://media.giphy.com/avatars/ZainJo/bUREz2x57qSx.gif',
+        storyItemsScreen: [
+          'https://mangoo.tech/wp-content/uploads/2021/05/money-transfer.gif'
+        ]),
+    StoryItemsManual(
+        storyName: 'Mtn',
+        storyThumbnail:
+            'https://turntable.kagiso.io/images/MTN_Logo_1299x1299.width-400.jpg',
+        storyItemsScreen: [
+          'https://mangoo.tech/wp-content/uploads/2021/05/money-transfer.gif'
         ])
   ];
   @override
@@ -197,7 +211,8 @@ class _HomeScreenState extends State<HomeScreen> {
       displayProgress: true,
       showStoryName: true,
       autoPlayDuration: const Duration(seconds: 5),
-      storyCircleTextStyle: const TextStyle(color: Colors.white),
+      storyCircleTextStyle: const TextStyle(
+          color: Colors.white, fontWeight: FontWeight.normal, fontSize: 12),
       // storyStatusBarColor: Colors.green,
       spaceBetweenStories: 5,
       // circleRadius: 20,
