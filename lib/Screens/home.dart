@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sleek_circular_slider/sleek_circular_slider.dart';
 import 'package:stories_for_flutter/stories_for_flutter.dart';
+import 'package:wallet/model/story_model.dart';
 
 import '../Constants/colors.dart';
 
@@ -12,10 +13,39 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  List<StoryItemsManual> myScaf = [
+    StoryItemsManual(
+      storyName: 'Purchase',
+      storyThumbnail:
+          'https://cdn.vectorstock.com/i/1000x1000/16/69/purchase-vector-29341669.webp',
+      storyItemsScreen: [
+        'https://www.marketing91.com/wp-content/uploads/2018/05/Purchase-intention-3.jpg',
+        'https://i.pinimg.com/originals/67/35/62/673562e7f57f4fb1f3752ec7e8b0a5c0.gif'
+      ],
+    ),
+    StoryItemsManual(
+      storyName: 'Send',
+      storyThumbnail:
+          'https://miro.medium.com/max/736/1*E8Ys7gfVryzMjtpYy9Z6gw.gif',
+      storyItemsScreen: [
+        'https://www.gifcen.com/wp-content/uploads/2021/05/money-gif-1.gif',
+        'https://miro.medium.com/max/736/1*E8Ys7gfVryzMjtpYy9Z6gw.gif'
+      ],
+    ),
+    StoryItemsManual(
+        storyName: 'Transfer',
+        storyThumbnail:
+            'https://mangoo.tech/wp-content/uploads/2021/05/money-transfer.gif',
+        storyItemsScreen: [
+          'https://mangoo.tech/wp-content/uploads/2021/05/money-transfer.gif'
+        ])
+  ];
   @override
   Widget build(BuildContext context) {
     // double h = MediaQuery.of(context).size.height;
     // double w = MediaQuery.of(context).size.width;
+    // StoryItem(name: name, thumbnail: thumbnail, stories: stories)
+
     return Scaffold(
       backgroundColor: background,
       appBar: AppBar(
@@ -73,66 +103,7 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(
               height: 10,
             ),
-            Stories(
-              displayProgress: true,
-              fullPagetitleStyle: const TextStyle(color: Colors.white),
-              showStoryName: false,
-              storyItemList: [
-                // First group of stories
-                StoryItem(
-                    name: "First Story",
-                    thumbnail: const NetworkImage(
-                      "https://assets.materialup.com/uploads/82eae29e-33b7-4ff7-be10-df432402b2b6/preview",
-                    ),
-                    stories: [
-                      // First story
-                      Scaffold(
-                        body: Container(
-                          decoration: const BoxDecoration(
-                            image: DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(
-                                "https://wallpaperaccess.com/full/16568.png",
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      // Second story in first group
-                      const Scaffold(
-                        body: Center(
-                          child: Text(
-                            "Second story in first group !",
-                            style: TextStyle(
-                              color: Color(0xff777777),
-                              fontSize: 25,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ]),
-                // Second story group
-                StoryItem(
-                  name: "2nd",
-                  thumbnail: const NetworkImage(
-                    "https://www.shareicon.net/data/512x512/2017/03/29/881758_cup_512x512.png",
-                  ),
-                  stories: [
-                    const Scaffold(
-                      body: Center(
-                        child: Text(
-                          "That's it, Folks !",
-                          style: TextStyle(
-                            color: Color(0xff777777),
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+            Row(children: [...myScaf.map((e) => stories(e)).toList()]),
             const SizedBox(
               height: 5.0,
             ),
@@ -202,6 +173,48 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  Scaffold myScreenView(String e) {
+    return Scaffold(
+      body: GestureDetector(
+        onVerticalDragDown: (details) => Navigator.pop(context),
+        child: Container(
+          decoration: BoxDecoration(
+            color: background,
+            image: DecorationImage(
+              // fit: BoxFit.cover,
+              image: NetworkImage(e),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Stories stories(StoryItemsManual x) {
+    return Stories(
+      displayProgress: true,
+      showStoryName: true,
+      autoPlayDuration: const Duration(seconds: 5),
+      storyCircleTextStyle: const TextStyle(color: Colors.white),
+      // storyStatusBarColor: Colors.green,
+      spaceBetweenStories: 5,
+      // circleRadius: 20,
+
+      storyItemList: [
+        storyItems(x),
+      ],
+    );
+  }
+
+  StoryItem storyItems(StoryItemsManual x) {
+    return StoryItem(
+        name: x.storyName,
+        thumbnail: NetworkImage(
+          x.storyThumbnail,
+        ),
+        stories: x.storyItemsScreen.map((e) => myScreenView(e)).toList());
   }
 
 //Creating Transaction//
