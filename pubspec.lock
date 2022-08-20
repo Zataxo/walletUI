@@ -212,6 +212,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.4.0"
+  pie_menu:
+    dependency: "direct main"
+    description:
+      name: pie_menu
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.7"
   sky_engine:
     dependency: transitive
     description: flutter
